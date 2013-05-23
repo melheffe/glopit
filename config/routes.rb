@@ -1,4 +1,22 @@
 GlopitWeb::Application.routes.draw do
+
+  resources :roles
+
+
+  # Devise Starts -- 
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  devise_scope :user do 
+   get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+  end 
+  
+  resources :users # has to be below devise_for
+  #Devise Ends  ---
+  
+  
+  root :to => "home#index"
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
