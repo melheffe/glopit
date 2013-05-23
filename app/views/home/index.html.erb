@@ -1,1 +1,13 @@
-Public Landing Page 
+    <div>
+      <!--Sidebar content-->
+      <% if user_signed_in?  %>
+      <%= link_to "[ Home ]", user_home_path %>
+      <% end %>
+  <%- if user_signed_in? %>
+  <%=current_user.email%></br>
+    <%# "Signed in as #{current_user.full_name}. Not you?" %>
+    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></br>
+    </br>
+  <%- else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+  <%- end %>

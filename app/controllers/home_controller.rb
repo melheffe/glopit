@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
   end
   
-  def usr_home
+  def user_home
   end
   
 end
